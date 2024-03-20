@@ -13,6 +13,10 @@
     </form>
     <br>
     <h2>Tasks</h2>
-
+    <ul> 
+        {{ range . }}
+            <li>{{ .Name }}</li>
+        {{ end }}
+    </ul>
 </body>
 </html>
