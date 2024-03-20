@@ -38,5 +38,4 @@ func postformHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	fmt.Println(string(jpostedTask))
-	fmt.Fprintf(w, "Имя: %s Возраст: %s", name, age)
 }
