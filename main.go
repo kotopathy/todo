@@ -26,16 +26,18 @@ func main() {
 
 func welcomeHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("welcomeHandler is running")
-	tpl.ExecuteTemplate(w, "index.html", t)
+	tpl.ExecuteTemplate(w, "index.html", nil)
 }
 
 func postformHandler(w http.ResponseWriter, r *http.Request) {
 	newtask := r.FormValue("newtask")
 	postedTask := &task{newtask, false}
+	t = append(t, task{newtask, false})
 	jpostedTask, err := json.Marshal(postedTask)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	fmt.Println(string(jpostedTask))
+	tpl.ExecuteTemplate(w, "index.html", t)
 }
